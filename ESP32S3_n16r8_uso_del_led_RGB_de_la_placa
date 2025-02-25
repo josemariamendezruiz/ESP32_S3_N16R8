@@ -1,0 +1,47 @@
+/*
+    COMO CONTROLAR EL LED RGB INTEGRADO EN LA PLACA
+    CODIGO ORIGINAL DE FASTLED
+    MODIFICADO POR : JOSE MARIA MENDEZ RUIZ
+    FEBRERO 2025
+    CODIGO LIBRE PARA UTILIZAR COMO QUIERAS
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+    
+    https://fastled.io/
+    /// @file    Blink.ino
+    /// @brief   Blink the first LED of an LED strip
+    /// @example Blink.ino
+*/
+
+#include <FastLED.h> // Libreria necesaria, instalar desde Administrador de Biblioteca
+
+#define NUM_LEDS 1
+#define DATA_PIN 48
+CRGB leds[NUM_LEDS];
+
+void setup() { 
+    FastLED.addLeds<WS2812, DATA_PIN, RGB>(leds, NUM_LEDS);  // GRB ordering is typical
+}
+
+void loop() { 
+  // Mediante los valores RGB podemos crear cualquier color, ir probando diferentes valores en el CRGB ( uno valor, otro valor , otro valor ) y vereis que color se crea
+  leds[0] = CRGB(255,0,0);  
+  FastLED.show();
+  delay(500);
+
+  leds[0] = CRGB(0,255,0);
+  FastLED.show();
+  delay(500);
+
+  leds[0] = CRGB(0,0,255);
+  FastLED.show();
+  delay(500);
+
+  leds[0] = CRGB::Black;
+  FastLED.show();
+  delay(500);
+}
